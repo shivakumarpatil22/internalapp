@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Investors</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile_Number</th>
+        <th>Age</th>
+        <th>Pan</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @investors.each do |investor| %>
+      <tr>
+        <td><%=investor.name%></td>
+        <td><%=investor.mobile_number %></td>
+        <td><%=investor.age %></td>
+        <td><%=investor.pan %></td>
+        <td><%= link_to "Show",  investor_path(investor.id) %></td>
+        <td><%= link_to "Edit",  edit_investor_path(investor.id) %></td>
+        <td><%= link_to "Destroy", investor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <%end%>
+      <%= will_paginate @investors %>
+    </tbody>
+  </table>
+</div>
